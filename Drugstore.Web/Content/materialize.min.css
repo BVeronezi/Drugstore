@@ -4241,10 +4241,9 @@ nav ul {
     nav ul a {
         transition: background-color .3s;
         font-size: 1rem;
-        color: #fff;
+        color: #26a69a;
         display: block;
         padding: 0 15px;
-        cursor: pointer
     }
 
         nav ul a.btn, nav ul a.btn-large, nav ul a.btn-large, nav ul a.btn-flat, nav ul a.btn-floating {
