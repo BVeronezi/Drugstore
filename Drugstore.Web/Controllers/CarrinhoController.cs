@@ -11,16 +11,22 @@ namespace Drugstore.Web.Controllers
     {
         private ProdutosRepositorio _repositorio;
 
-        public ViewResult Index(Carrinho carrinho, string returnurl)
+        public ViewResult Index(string returnurl)
         {
             return View(new CarrinhoViewModel
             {
-                Carrinho = carrinho,
+                Carrinho = ObterCarrinho(),
                 ReturnUrl = returnurl
             });
         }
 
-        public RedirectToRouteResult Adicionar(Carrinho carrinho, int produtoId, int quantidade, string returnUrl)
+        public PartialViewResult Resumo()
+        {
+            Carrinho carrinho = ObterCarrinho();
+            return PartialView(carrinho);
+        }
+
+        public RedirectToRouteResult Adicionar(int produtoId, string returnUrl)
         {
             _repositorio = new ProdutosRepositorio();
 
@@ -29,15 +35,14 @@ namespace Drugstore.Web.Controllers
 
             if (produto != null)
             {
-                carrinho.AdicionarItem(produto, 1);
-
+                ObterCarrinho().AdicionarItem(produto, 1);
             }
 
             return RedirectToAction("Index", new { returnUrl });
 
         }
 
-        private object ObterCarrinho()
+        private Carrinho ObterCarrinho()
         {
             Carrinho carrinho = (Carrinho)Session["Carrinho"];
             if (carrinho == null)
@@ -45,13 +50,11 @@ namespace Drugstore.Web.Controllers
                 carrinho = new Carrinho();
                 Session["Carrinho"] = carrinho;
             }
-
             return carrinho;
         }
 
-        public RedirectToRouteResult Remover(Carrinho carrinho, int produtoId, string returnUrl)
+        public RedirectToRouteResult Remover(int produtoId, string returnUrl)
         {
-
             _repositorio = new ProdutosRepositorio();
 
             Produto produto = _repositorio.Produtos
@@ -59,18 +62,21 @@ namespace Drugstore.Web.Controllers
 
             if (produto != null)
             {
-                carrinho.RemevorItem(produto);
+                ObterCarrinho().RemevorItem(produto);
             }
 
             return RedirectToAction("Index", new { returnUrl });
         }
 
-
-        public ViewResult PedidoConcluido()
+        public ViewResult FecharPedido()
         {
-            return View();
+            return View(new Pedido());    
         }
 
-
+        [HttpPost]
+        public ViewResult FecharPedido(Pedido pedido)
+        {
+            return View(new Pedido());
+        }
     }
 }

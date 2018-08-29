@@ -1,0 +1,7 @@
+﻿@model Drugstore.Dominio.Entidades.Carrinho
+
+<div class="navbar-text">
+    <b>Seus produtos:</b>
+    @Model.ItensCarrinho.Sum(x => x.Quantidade) item(s), @Model.ObterValorTotal().ToString("c")
+</div>
+

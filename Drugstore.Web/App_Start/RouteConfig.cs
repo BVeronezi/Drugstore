@@ -22,7 +22,6 @@ namespace Drugstore.Web
             routes.MapRoute(null, "", new { controller = "Vitrine", action = "ListaProdutos", categoria = (string)null, pagina = 1 });
 
 
-
             // 2 - 
             routes.MapRoute(null,
                 "Pagina{pagina}",
@@ -44,7 +43,6 @@ namespace Drugstore.Web
             //    new {controller = "Vitrine", action = "ObterImagem", produtoId = UrlParameter.Optional});
 
             routes.MapRoute(null, "{controller}/{action}");
-
 
         }
     }
