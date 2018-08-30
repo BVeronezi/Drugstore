@@ -2,6 +2,7 @@
 using Drugstore.Dominio.Repositorio;
 using Drugstore.Web.Models;
 using System;
+using System.Configuration;
 using System.Linq;
 using System.Web.Mvc;
 
@@ -76,7 +77,34 @@ namespace Drugstore.Web.Controllers
         [HttpPost]
         public ViewResult FecharPedido(Pedido pedido)
         {
-            return View(new Pedido());
+            Carrinho carrinho = ObterCarrinho();
+
+            EmailConfiguracoes email = new EmailConfiguracoes
+            {
+                EscreverArquivo = bool.Parse(ConfigurationManager.AppSettings["Email.EscreverArquivo"] ?? "true")
+            };
+
+            EmailProcessarPedido emailProcessarPedido = new EmailProcessarPedido(email);
+            
+            if (!carrinho.ItensCarrinho.Any())
+            {
+                ModelState.AddModelError("", "Não foi possível concluir o pedido, seu carrinho está vazio.");
+            }
+
+            if (ModelState.IsValid)
+            {
+                emailProcessarPedido.ProcessarPedido(carrinho, pedido);
+                carrinho.LimparCarrinho();
+                return View("PedidoConcluido");
+            }
+            else
+            {
+                return View(pedido);
+            }
+        }
+        public ViewResult PedidoConcluido()
+        {
+            return View();
         }
     }
 }

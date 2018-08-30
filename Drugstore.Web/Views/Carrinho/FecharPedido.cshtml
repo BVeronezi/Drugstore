@@ -1,7 +1,7 @@
 ﻿@model Drugstore.Dominio.Entidades.Pedido
 
 @{
-    ViewBag.Title = "Drugstore: Fechar o pedido";
+     ViewBag.Title = "Drugstore: Fechar o pedido";
 }
 <h5>Fechar o pedido</h5>
 <p>Digite suas informações abaixo</p>
@@ -10,57 +10,68 @@
 {
     @Html.ValidationSummary()
 
-    <h5>Enviar para</h5>
-    <div class="form-group col-md-4">
+    <h3>Enviar para</h3>
+
+    <div class="form-group">
+        <label>Nome do cliente:</label>
         @Html.TextBoxFor(x => x.NomeCliente, new { @class = "form-control" })
         @Html.ValidationMessageFor(x => x.NomeCliente)
 
     </div>
 
-    <h5>Dados para entrega</h5>
-    <form>
-        <div class="form-row">
-            <div class="col-md-4">
-                <label for="Cep">CEP:</label>
-                <input type="text" class="form-control" id="Cep" placeholder="CEP">
+    <h3>Dados para entrega</h3>
+
+    foreach (var property in ViewData.ModelMetadata.Properties)
+    {
+        if (property.PropertyName != "NomeCliente")
+        {
+            <div class="form-group">
+                <label>
+                    @(property.DisplayName ?? property.PropertyName)
+                </label>
+                @Html.TextBox(property.PropertyName, null, new { @class = "form-control" })
             </div>
-            <div class="col-md-5">
-                <label for="Cep">Endereço:</label>
-                <input type="text" class="form-control" id="Endereco" placeholder="Endereço">
-            </div>
-            <div class="col-md-1">
-                <label for="Cep">Número:</label>
-                <input type="text" class="form-control" id="Numero" placeholder="Número">
-            </div>
-            <div class="col-md-5">
-                <label for="Cep">Complemento:</label>
-                <input type="text" class="form-control" id="Complemento" placeholder="Complemento">
-            </div>
-            <div class="col-md-5">
-                <label for="Cep">Bairro:</label>
-                <input type="text" class="form-control" id="Bairro" placeholder="Bairro">
-            </div>
-            <div class="col-md-5">
-                <label for="Cep">Cidade:</label>
-                <input type="text" class="form-control" id="Cidade" placeholder="Cidade">
-            </div>
-            <div class="col-md-5">
-                <label for="Cep">Estado:</label>
-                <input type="text" class="form-control" id="Estado" placeholder="Estado">
-            </div>
-                <div class="form-group col-md-5">
-                    <label for="Cep">Email:</label>
-                    <input type="email" class="form-control" id="Email" placeholder="Email">
-                </div>
-                <div class="form-group col-md-5">
-                    <label for="Cep">Telefone:</label>
-                    <input type="tel" class="form-control" id="Telefone" placeholder="Telefone">
-                </div>
-            </div>
-</form>
-    <div class="form-group">
-        <div class="col-12 col-md-10">
-            <input class="btn btn-primary" type="submit" value="Fechar o pedido" />
-        </div>
-    </div>
- }
+        }
+    }
+
+    <input class="btn btn-primary" type="submit" value="Fechar o pedido" />
+
+    <hr />
+
+}
+<script src="~/Scripts/jquery-3.3.1.min.js"></script>
+
+<script>
+
+    setTimeout(function () { $('.validation-summary-errors').fadeOut(); }, 5000);
+
+    $('#Cep').change(function (e) {
+
+        e.preventDefault();
+
+        $("#Endereco").val('');
+        $("#Bairro").val('');
+        $("#Cidade").val('');
+        $("#Estado").val('');
+
+        var cep = $('#Cep').val().replace("-", "");
+
+        $.getJSON("http://cep.republicavirtual.com.br/web_cep.php?cep=" + cep + "&formato=json", {}, function (data) {
+
+            if (data.resultado_txt == 'sucesso - cep completo') {
+
+                $("#Endereco").val(data.tipo_logradouro + ' ' + data.logradouro);
+                $("#Bairro").val(data.bairro);
+                $("#Cidade").val(data.cidade);
+                $("#Estado").val(data.uf);
+
+            } else {
+                //CEP não Encontrado.
+                (data.resultado_txt == 'sucesso - cep não encontrado')
+                {
+                    alert("CEP não encontrado.");
+                }
+            };
+        });
+    });
+</script>
