@@ -20,7 +20,7 @@ namespace Drugstore.Web
             });
 
             AntiForgeryConfig.UniqueClaimTypeIdentifier = "Login";
-      
+
         }
     }
 }
