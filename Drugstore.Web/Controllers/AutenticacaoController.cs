@@ -1,21 +1,21 @@
 ﻿using Drugstore.Dominio.Entidades;
 using Drugstore.Dominio.Repositorio;
 using Drugstore.Web.Models;
-using Drugstore.Web.Utils;
 using Drugstore.Web.ViewModels;
 using System;
-using System.Collections.Generic;
 using System.Linq;
 using System.Security.Claims;
+using System.Security.Policy;
 using System.Web;
 using System.Web.Mvc;
+using System.Web.Security;
 
 namespace Drugstore.Web.Controllers
 {
     public class AutenticacaoController : Controller
     {
         private UsuariosContext db = new UsuariosContext();
-        // GET: Autenticacao
+        // GET: Autenticacao Usuario
         public ActionResult Cadastrar()
         {
             return View();
@@ -39,7 +39,7 @@ namespace Drugstore.Web.Controllers
             {
                 Nome = viewmodel.Nome,
                 Login = viewmodel.Login,
-                Senha = Hash.GerarHash(viewmodel.Senha)
+                Senha = viewmodel.Senha
             };
 
             db.Usuarios.Add(novoUsuario);
@@ -74,7 +74,7 @@ namespace Drugstore.Web.Controllers
                 return View(viewmodel);
             }
 
-            if (usuario.Senha != Hash.GerarHash(viewmodel.Senha))
+            if (usuario.Senha !=viewmodel.Senha)
             {
                 ModelState.AddModelError("Senha", "Senha incorreta");
                 return View(viewmodel);

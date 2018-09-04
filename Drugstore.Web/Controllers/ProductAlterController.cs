@@ -6,9 +6,10 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 
-namespace Drugstore.Web.Areas.Administrativo.Controllers
+namespace Drugstore.Web.Controllers
 {
-    public class ProdutosController : Controller
+    [Authorize]
+    public class ProctsAlterController : Controller
     {
         private ProdutosRepositorio _repositorio;
 
@@ -41,6 +42,27 @@ namespace Drugstore.Web.Areas.Administrativo.Controllers
                 return RedirectToAction("Index");
             }
             return View(produto);
+        }
+
+        public ViewResult NovoProduto()
+        {
+            return View("Alterar", new Produto());
+        }
+
+        [HttpPost]
+        public JsonResult Excluir(int produtoId)
+        {
+            string mensagem = string.Empty;
+            _repositorio = new ProdutosRepositorio();
+
+            Produto prod = _repositorio.Excluir(produtoId);
+
+            if (prod != null)
+            {
+                mensagem = string.Format("{0} excluído com sucesso", prod.Nome);
+            }
+
+            return Json(mensagem, JsonRequestBehavior.AllowGet);
         }
     }
 }

@@ -1,0 +1,62 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=8,chrome=1">
+    <title>@ViewBag.Title - Drugstore</title>
+    <link href="~/Content/bootstrap.css" rel="stylesheet" type="text/css" />
+    <link type="text/css" rel="stylesheet" href="~/Content/materialize.min.css" />
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#categorias" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="categorias">
+            <ul class="navbar-nav mr-auto">
+                <li> <a class="nav-link" href="#">Drugstore<span class="sr-only">(current)</span></a></li>
+                <li> <a class="nav-link" href="#">Medicamentos</a></li>
+                <li> <a class="nav-link" href="#">Higiene e Cuidados</a></li>
+                <li> <a class="nav-link" href="#">Suplementos</a></li>
+                <li> <a class="nav-link" href="#">Dermocosméticos</a></li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Descontos especiais
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                        <a class="dropdown-item" href="#">Linha Feminina</a>
+                        <a class="dropdown-item" href="#">Linha Masculina</a>
+                        <a class="dropdown-item" href="#">Medicamentos</a>
+                    </div>
+                </li>
+                @Html.Action("Resumo", "Carrinho")
+            </ul>
+            <ul class="navbar-nav">
+                @if (User.Identity.IsAuthenticated)
+                {
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                            @User.Identity.Name<span class="caret"></span>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li>@Html.ActionLink("Alterar senha", "AlterarSenha", "Perfil")</li>
+                            <li>@Html.ActionLink("Sair", "Logout", "Autenticacao")</li>
+                        </ul>
+                    </li>
+                }
+                else
+                {
+                    <li>@Html.ActionLink("Login", "Login", "Autenticacao")</li>
+                    <li>@Html.ActionLink("Cadastre-se", "Cadastrar", "Autenticacao")</li>
+                }
+            </ul>
+        </div>
+    </nav>
+    <div class="col-xs-8">
+        @RenderBody()
+    </div>
+    <script src="~/Scripts/jquery-3.3.1.min.js"></script>
+    <script src="~/Scripts/bootstrap.min.js"></script>
+    @RenderSection("scripts", false)
+</body>
+</html>

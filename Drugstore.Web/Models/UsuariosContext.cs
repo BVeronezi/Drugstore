@@ -1,14 +1,17 @@
-﻿using System.Data.Entity;
+﻿using System;
+using System.Collections.Generic;
+using System.Data.Entity;
+using System.Linq;
+using System.Web;
 
 namespace Drugstore.Web.Models
 {
     public class UsuariosContext : DbContext
     {
-        public DbSet<Usuario> Usuarios { get; set; }
-
-        public UsuariosContext(): base("Usuarios")
+        public UsuariosContext() : base("Usuarios")
         {
-
         }
+
+        public DbSet<Usuario> Usuarios { get; set; }
 }
 }

@@ -21,6 +21,14 @@ namespace Drugstore.Web
 
             AntiForgeryConfig.UniqueClaimTypeIdentifier = "Login";
 
+            app.UseCookieAuthentication(new CookieAuthenticationOptions
+            {
+                AuthenticationType = "ApplicationCookie",
+                LoginPath = new PathString("/Administrador/LoginAdmin")
+            });
+
+            AntiForgeryConfig.UniqueClaimTypeIdentifier = "LoginAdmin";
+
         }
     }
 }
