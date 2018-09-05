@@ -6,8 +6,6 @@
     <meta http-equiv="X-UA-Compatible" content="IE=8,chrome=1">
     <meta name="viewport" content="width=device-width" />
     <title>@ViewBag.Title - Drugstore</title>
-
-    <link type="text/css" rel="stylesheet" href="~/Content/materialize.min.css" />
     <link href="~/Content/bootstrap.css" rel="stylesheet" type="text/css" />
 </head>
 <body>
@@ -17,9 +15,27 @@
                 <a class="navbar-brand" href="#">Drugstore</a>
             </div>
         </div>
+        <ul class="navbar-nav">
+            @if (User.Identity.IsAuthenticated)
+            {
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                        @User.Identity.Name<span class="caret"></span>
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li>@Html.ActionLink("Alterar senha", "AlterarSenha", "Perfil")</li>
+                        <li>@Html.ActionLink("Sair", "Logout", "Autenticacao")</li>
+                    </ul>
+                </li>
+            }
+            else
+            {
+                <li>@Html.ActionLink("Login", "Login", "Autenticacao")</li>
+                <li>@Html.ActionLink("Cadastre-se", "Cadastrar", "Autenticacao")</li>
+            }
+        </ul>
     </nav>
-
-    <div>
+       <div>
         @RenderBody()
     </div>
 

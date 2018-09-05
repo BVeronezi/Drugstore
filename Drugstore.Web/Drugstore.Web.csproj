@@ -125,7 +125,6 @@
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\Login.css" />
-    <Content Include="Content\materialize.min.css" />
     <Content Include="Content\Site.css" />
     <Content Include="Global.asax" />
     <Content Include="Scripts\bootstrap.bundle.js" />
@@ -236,7 +235,6 @@
     <Compile Include="Controllers\CategoriaController.cs" />
     <Compile Include="Controllers\PainelController.cs" />
     <Compile Include="Controllers\PerfilController.cs" />
-    <Compile Include="Controllers\ProductAlterController.cs" />
     <Compile Include="Controllers\ProdutosController.cs" />
     <Compile Include="Controllers\VitrineController.cs" />
     <Compile Include="Global.asax.cs">

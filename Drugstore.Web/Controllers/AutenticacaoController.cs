@@ -97,7 +97,7 @@ namespace Drugstore.Web.Controllers
         public ActionResult Logout()
         {
             Request.GetOwinContext().Authentication.SignOut("ApplicationCookie");
-            return RedirectToAction("Index", "Produtos");
+            return RedirectToAction("ListaProdutos", "Vitrine");
         }
     }
 }

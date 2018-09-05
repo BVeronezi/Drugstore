@@ -64,17 +64,7 @@ namespace Drugstore.Web.Controllers
         public ActionResult LogoutAdmin()
         {
             FormsAuthentication.SignOut();
-            Session.Clear();
-            Session.Abandon();
-
-            // Clear authentication cookie
-            HttpCookie rFormsCookie = new HttpCookie(FormsAuthentication.FormsCookieName, "");
-            rFormsCookie.Expires = DateTime.Now.AddYears(-1);
-            Response.Cookies.Add(rFormsCookie);
-
-            Response.Cache.SetCacheability(HttpCacheability.NoCache);
-            Response.Cache.SetNoStore();
-            return RedirectToAction("Index", "Produtos");
+            return RedirectToAction("LoginAdmin", "Administrador");
         }
     }
 }
