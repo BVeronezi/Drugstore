@@ -8,43 +8,41 @@ using System.Web.Mvc;
 
 namespace Drugstore.Web.Controllers
 {
+    [Authorize]
     public class PerfilController : Controller
     {
+        private UsuariosContext db = new UsuariosContext();
 
-
-        [Authorize]
         public ActionResult AlterarSenha()
         {
             return View();
         }
-        //    [HttpPost]
-        //    public ActionResult AlterarSenha(AlterarSenhaViewModel viewmodel)
-        //    {
-        //        if (!ModelState.IsValid)
-        //        {
-        //            return View();
-        //        }
 
-        //        var identity = User.Identity as ClaimsIdentity;
-        //        var login = identity.Claims.FirstOrDefault(c => c.Type == "Login").Value;
+        [HttpPost]
+        public ActionResult AlterarSenha(AlterarSenhaViewModel viewmodel)
+        {
+            if (!ModelState.IsValid)
+            {
+                return View();
+            }
 
-        //        var usuario = _repositorio.FirstOrDefault(u => u.Login == login);
+            var identity = User.Identity as ClaimsIdentity;
+            var login = identity.Claims.FirstOrDefault(c => c.Type == "Login").Value;
 
-        //        if (Hash.GerarHash(viewmodel.SenhaAtual) != usuario.Senha)
-        //        {
-        //            ModelState.AddModelError("SenhaAtual", "Senha incorreta");
-        //            return View();
-        //        }
+            var usuario = db.Usuarios.FirstOrDefault(u => u.Login == login);
 
-        //        usuario.Senha = Hash.GerarHash(viewmodel.NovaSenha);
-        //        _repositorio.Entry(usuario).State = System.Data.Entity.EntityState.Modified;
-        //        _repositorio.SaveChanges();
+            if (Hash.GerarHash(viewmodel.SenhaAtual) != usuario.Senha)
+            {
+                ModelState.AddModelError("SenhaAtual", "Senha incorreta");
+                return View();
+            }
 
-        //        TempData["Mensagem"] = "Senha Alterada com sucesso";
+            usuario.Senha = Hash.GerarHash(viewmodel.NovaSenha);
+            db.Entry(usuario).State = System.Data.Entity.EntityState.Modified;
+            db.SaveChanges();
 
-        //        return RedirectToAction("Index", "Painel");
-        //    }
-        //}
+            return RedirectToAction("Index", "Painel");
+        }
 
     }
 }

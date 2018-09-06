@@ -26,4 +26,10 @@ namespace Drugstore.Dominio.Entidades
 
         public string ImageMimeType { get; set; }
     }
+
+    public class Pessoa
+    {
+        public string Nome { get; set; }
+        public string SobreNome { get; set; }
+    }
 }

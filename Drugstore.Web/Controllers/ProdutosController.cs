@@ -8,6 +8,7 @@ using System.Web.Mvc;
 
 namespace Drugstore.Web.Controllers
 {
+    [Authorize]
     public class ProdutosController : Controller
     {
         private ProdutosRepositorio _repositorio;

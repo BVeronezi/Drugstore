@@ -12,22 +12,21 @@ namespace Drugstore.Web.Controllers
     {
         private ProdutosRepositorio _repositorio;
 
-        public ViewResult Index(string returnurl)
+        public ViewResult Index(Carrinho carrinho, string returnurl)
         {
             return View(new CarrinhoViewModel
             {
-                Carrinho = ObterCarrinho(),
+                Carrinho = carrinho,
                 ReturnUrl = returnurl
             });
         }
 
-        public PartialViewResult Resumo()
+        public PartialViewResult Resumo(Carrinho carrinho)
         {
-            Carrinho carrinho = ObterCarrinho();
             return PartialView(carrinho);
         }
 
-        public RedirectToRouteResult Adicionar(int produtoId, string returnUrl)
+        public RedirectToRouteResult Adicionar(Carrinho carrinho, int produtoId, int quantidade, string returnUrl)
         {
             _repositorio = new ProdutosRepositorio();
 
@@ -36,25 +35,12 @@ namespace Drugstore.Web.Controllers
 
             if (produto != null)
             {
-                ObterCarrinho().AdicionarItem(produto, 1);
+                carrinho.AdicionarItem(produto, quantidade);
             }
-
             return RedirectToAction("Index", new { returnUrl });
-
         }
 
-        private Carrinho ObterCarrinho()
-        {
-            Carrinho carrinho = (Carrinho)Session["Carrinho"];
-            if (carrinho == null)
-            {
-                carrinho = new Carrinho();
-                Session["Carrinho"] = carrinho;
-            }
-            return carrinho;
-        }
-
-        public RedirectToRouteResult Remover(int produtoId, string returnUrl)
+        public RedirectToRouteResult Remover(Carrinho carrinho, int produtoId, string returnUrl)
         {
             _repositorio = new ProdutosRepositorio();
 
@@ -63,7 +49,7 @@ namespace Drugstore.Web.Controllers
 
             if (produto != null)
             {
-                ObterCarrinho().RemevorItem(produto);
+                carrinho.RemevorItem(produto);
             }
 
             return RedirectToAction("Index", new { returnUrl });
@@ -71,21 +57,19 @@ namespace Drugstore.Web.Controllers
 
         public ViewResult FecharPedido()
         {
-            return View(new Pedido());    
+            return View(new Pedido());
         }
 
         [HttpPost]
-        public ViewResult FecharPedido(Pedido pedido)
+        public ViewResult FecharPedido(Carrinho carrinho, Pedido pedido)
         {
-            Carrinho carrinho = ObterCarrinho();
-
             EmailConfiguracoes email = new EmailConfiguracoes
             {
                 EscreverArquivo = bool.Parse(ConfigurationManager.AppSettings["Email.EscreverArquivo"] ?? "true")
             };
 
             EmailProcessarPedido emailProcessarPedido = new EmailProcessarPedido(email);
-            
+
             if (!carrinho.ItensCarrinho.Any())
             {
                 ModelState.AddModelError("", "Não foi possível concluir o pedido, seu carrinho está vazio.");
