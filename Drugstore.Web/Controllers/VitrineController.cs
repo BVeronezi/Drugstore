@@ -1,4 +1,5 @@
-﻿using Drugstore.Dominio.Repositorio;
+﻿using Drugstore.Dominio.Entidades;
+using Drugstore.Dominio.Repositorio;
 using Drugstore.Web.Models;
 using System.Linq;
 using System.Web.Mvc;
@@ -32,6 +33,21 @@ namespace Drugstore.Web.Controllers
                 CategoriaAtual = categoria
             };
             return View(model);
+        }
+        [Route("Vitrine/ObterImagem/{produtoid}")]
+        public FileContentResult ObterImagem(int produtoId)
+        {
+            _repositorio = new ProdutosRepositorio();
+            Produto prod = _repositorio.Produtos
+                .FirstOrDefault(p => p.ProdutoId == produtoId);
+
+            if (prod != null)
+            {
+                return File(prod.Imagem, prod.ImageMimeType);
+            }
+
+
+            return null;
         }
     }
 }

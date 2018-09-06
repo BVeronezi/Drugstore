@@ -241,6 +241,7 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Helpers\PaginacaoHelpers.cs" />
+    <Compile Include="Helpers\StringHelper.cs" />
     <Compile Include="Models\CarrinhoViewModel.cs" />
     <Compile Include="Models\Paginacao.cs" />
     <Compile Include="Models\ProdutosViewModel.cs" />
@@ -275,6 +276,7 @@
     <Content Include="Views\Produtos\Confirmacao.cshtml" />
     <Content Include="Views\Administrador\LoginAdmin.cshtml" />
     <Content Include="Views\Shared\_LayoutAdmin.cshtml" />
+    <Content Include="Views\Vitrine\Detalhes.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
