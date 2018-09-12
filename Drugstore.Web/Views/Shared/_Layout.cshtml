@@ -4,17 +4,22 @@
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=8,chrome=1">
     <title>@ViewBag.Title - Drugstore</title>
-    <link href="~/Content/bootstrap.css" rel="stylesheet" type="text/css" />
-   
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    @using System.Web.Optimization
+    <link href="~/Content/bootstrap.css" rel="stylesheet" />
+    <link href="~/Content/Login.css" rel="stylesheet" />
+
 </head>
 <body>
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#categorias" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+        <a class="navbar-brand" href="#">Drugstore</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
-        <div class="collapse navbar-collapse" id="categorias">
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav mr-auto">
-                <li> <a class="nav-link" href="#">Drugstore<span class="sr-only">(current)</span></a></li>
                 <li> <a class="nav-link" href="#">Medicamentos</a></li>
                 <li> <a class="nav-link" href="#">Higiene e Cuidados</a></li>
                 <li> <a class="nav-link" href="#">Suplementos</a></li>
@@ -29,8 +34,10 @@
                         <a class="dropdown-item" href="#">Medicamentos</a>
                     </div>
                 </li>
-                @Html.Action("Resumo", "Carrinho")
+                <a id="cartMenu" data-toggle="modal" href="#shoppingcart" data-url=@Html.Action("Resumo", "Carrinho")
+            </a>
             </ul>
+
             <ul class="navbar-nav">
                 @if (User.Identity.IsAuthenticated)
                 {
@@ -52,9 +59,19 @@
             </ul>
         </div>
     </nav>
+
     <div class="col-xs-8">
         @RenderBody()
     </div>
+
+
+    <footer class="page-footer font-small blue pt-4">
+        <div class="footer-copyright text-center py-3">
+            © TCC Drugstore
+            <a href="https://www.pucminas.br/PucVirtual/Pos-Graduacao/Paginas/Arquitetura-de-Software-Distribuido.aspx?moda=1&polo=1&area=11&curso=2096&situ=1"> PUC Minas</a>
+        </div>
+    </footer>
+
     <script src="~/Scripts/jquery-3.3.1.min.js"></script>
     <script src="~/Scripts/bootstrap.min.js"></script>
     @RenderSection("scripts", false)

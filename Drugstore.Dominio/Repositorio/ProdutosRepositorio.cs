@@ -56,5 +56,10 @@ namespace Drugstore.Dominio.Repositorio
 
             return prod;
         }
+
+        public Produto GetProduto(int id)
+        {
+            return _context.Produtos.Single(p => p.ProdutoId == id);
+        }
     }
 }

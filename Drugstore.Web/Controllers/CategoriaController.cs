@@ -9,21 +9,23 @@ namespace Drugstore.Web.Controllers
 {
     public class CategoriaController : Controller
     {
-        private ProdutosRepositorio _repositorio;
+        private CategoriaRepositorio _repositorio;
 
-        public PartialViewResult Menu(string categoria = null)
+        public JsonResult GetMedicamentos()
         {
-            ViewBag.CategoriaSelecionada = categoria;
+            _repositorio = new CategoriaRepositorio();
+            var cat = _repositorio.GetCategorias();
 
-            _repositorio = new ProdutosRepositorio();
+            var categoria = from c in cat
+                            select new
+                            {
+                                c.CategoriaDescricao,
+                                CategoriaDescricaoSeo = c.CategoriaDescricao.ToSeoUrl(),
+                                c.CategoriaCodigo
 
-            IEnumerable<string> categorias = _repositorio.Produtos
-                .Select(c => c.Categoria)
-                .Distinct()
-                .OrderBy(c => c);
+                            };
 
-            return PartialView(categorias);
-
+            return Json(categoria, JsonRequestBehavior.AllowGet);
         }
     }
 }

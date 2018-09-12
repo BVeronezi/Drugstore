@@ -1,6 +1,7 @@
 ﻿using Drugstore.Dominio.Entidades;
 using Drugstore.Dominio.Repositorio;
 using Drugstore.Web.Models;
+using System;
 using System.Linq;
 using System.Web.Mvc;
 
@@ -17,7 +18,7 @@ namespace Drugstore.Web.Controllers
 
             ProdutosViewModel model = new ProdutosViewModel
             {
-                Produtos = _repositorio.Produtos    
+                Produtos = _repositorio.Produtos
                     .Where(p => categoria == null || p.Categoria == categoria)
                     .OrderBy(p => p.Descricao)
                     .Skip((pagina - 1) * ProdutosPorPagina)
@@ -34,6 +35,7 @@ namespace Drugstore.Web.Controllers
             };
             return View(model);
         }
+
         [Route("Vitrine/ObterImagem/{produtoid}")]
         public FileContentResult ObterImagem(int produtoId)
         {
@@ -49,5 +51,15 @@ namespace Drugstore.Web.Controllers
 
             return null;
         }
+
+        [Route("DetalhesProduto/{id}/{produto}")]
+        public ViewResult Detalhes(int id)
+        {
+            _repositorio = new ProdutosRepositorio();
+            Produto produto = _repositorio.GetProduto(id);
+            return View(produto);
+        }
+
+
     }
 }

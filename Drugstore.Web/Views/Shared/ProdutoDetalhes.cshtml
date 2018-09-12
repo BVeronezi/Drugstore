@@ -1,6 +1,5 @@
 ﻿@model Drugstore.Dominio.Entidades.Produto
 
-
 <div class="well">
     @if (Model.Imagem != null)
     {
@@ -10,17 +9,7 @@
             </div>
         </div>
     }
-    
-    @using (Html.BeginForm("Adicionar", "Carrinho"))
-    {
-        <div class="pull-right">
-            @Html.HiddenFor(x => x.ProdutoId)
-            @Html.Hidden("quantidade", 1)
-            @Html.Hidden("returnUrl", Request.Url.PathAndQuery)
-            <input type="submit" class="btn btn-success" value="Comprar" />
-        </div>
-    }
-    <div class="row">
+    <div class="col-md-12">
         <h4>
             @Html.ActionLink(@Model.Nome, "Detalhes", "Vitrine", new { id = @Model.ProdutoId, produto = @Model.Nome.ToSeoUrl() }, new { @class = "deco-none" })
             <br />
@@ -29,4 +18,5 @@
             </span>
         </h4>
     </div>
+
 </div>
