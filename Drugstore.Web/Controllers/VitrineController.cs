@@ -10,7 +10,7 @@ namespace Drugstore.Web.Controllers
     public class VitrineController : Controller
     {
         private ProdutosRepositorio _repositorio;
-        public int ProdutosPorPagina = 3;
+        public int ProdutosPorPagina = 6;
 
         public ViewResult ListaProdutos(string categoria, int pagina = 1)
         {

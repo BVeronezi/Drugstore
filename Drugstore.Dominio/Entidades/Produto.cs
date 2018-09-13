@@ -1,4 +1,6 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using Drugstore.Dominio.Entidades;
+using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Web.Mvc;
 
 namespace Drugstore.Dominio.Entidades
@@ -22,14 +24,10 @@ namespace Drugstore.Dominio.Entidades
         [Required(ErrorMessage = "Digite a categoria")]
         public string Categoria { get; set; }
 
+        public int Quantidade { get; set; }
+
         public byte[] Imagem { get; set; }
 
         public string ImageMimeType { get; set; }
-    }
-
-    public class Pessoa
-    {
-        public string Nome { get; set; }
-        public string SobreNome { get; set; }
     }
 }

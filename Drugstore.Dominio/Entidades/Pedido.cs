@@ -1,15 +1,21 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using System.Web.Mvc;
 
 namespace Drugstore.Dominio.Entidades
 {
-    public class Pedido
+    public class Pedido 
     {
         [Required(ErrorMessage = "Informe seu nome")]
         [Display(Name = "Nome Completo:")]
         public string NomeCliente { get; set; }
 
+        // Documento
+        [Required]
+        [Display(Name = "RG:")]
+        public string Documento { get; set; }
+
         [Display(Name = "CEP:")]
-        public int Cep { get; set; }
+        public string Cep { get; set; }
 
         [Required(ErrorMessage = "Informe seu endereço")]
         [Display(Name = "Endereço:")]
@@ -43,5 +49,17 @@ namespace Drugstore.Dominio.Entidades
         [Required(ErrorMessage = "Informe seu Telefone")]
         public string Telefone { get; set; }
 
+        [HiddenInput(DisplayValue = false)]
+        public string CodigoArea { get; set; }
+
+        [HiddenInput(DisplayValue = true)]
+        public int Id { get; set; }
+
+        [HiddenInput(DisplayValue = false)]
+        public string ProdutosPedido { get; set; }
+
+        // Endereço
+        [HiddenInput(DisplayValue = false)]
+        public virtual EnderecoCliente EnderecoCliente { get; set; }
     }
 }

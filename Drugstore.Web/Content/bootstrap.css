@@ -4110,10 +4110,10 @@ tbody.collapse.show {
     }
 
 .pagination {
-    display: -ms-flexbox;
+    display: block;
     display: flex;
     padding-left: 0;
-    list-style: none;
+    list-style: inside;
     border-radius: 0.25rem;
 }
 
@@ -8927,4 +8927,22 @@ a.text-dark:focus, a.text-dark:hover {
 
 .visible {
     visibility: visible !important;
+}
+div {
+    border-radius: 5px;
+}
+
+.contenedor {
+    background-color: #CCC;
+    width: 100%;
+    height: 200px;
+    display: contents;
+    justify-content: space-around;
+}
+
+.contenido {
+    height: 200px;
+    width: 10%;
+    float: left;
+    margin: 30px;
 }
