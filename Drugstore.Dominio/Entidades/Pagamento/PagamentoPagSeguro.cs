@@ -41,60 +41,60 @@ namespace Drugstore.Dominio.Entidades.Pagamento
 
         #endregion
 
-        public PagamentoPagSeguro() { }
+        //public PagamentoPagSeguro() { }
 
-        public PagamentoPagSeguro(Pedido pedido, string redirectUrl, string requestIp, Produto produto)
-        {
-            Sender = new SenderPagSeguro()
-            {
-                IP = requestIp,
-                Documents = new List<SenderDocumentPagSeguro>() {
-                    new SenderDocumentPagSeguro()
-                    {
-                        Value = pedido.Documento.ToString()
-                    }
-                },
-                Phone = new SenderPhonePagSeguro()
-                {
-                    AreaCode = pedido.Telefone,
-                    Number = pedido.CodigoArea
-                },
-                Email = pedido.Email,
-                Name = pedido.NomeCliente
-            };
-            Items = new List<ItemPagSeguro>();
-            foreach (var produtoId in pedido.ProdutosPedido)
-            {
-                Items.Add(new ItemPagSeguro()
-                {
-                    Id = produto.ProdutoId.ToString(),
-                    Description = produto.Descricao,
-                    Amount = produto.Preco,
-                    Quantity = produto.Quantidade
-                });
-            }
-            RedirectURL = redirectUrl;
+        //public PagamentoPagSeguro(Pedido pedido, string redirectUrl, string requestIp, Produto produto)
+        //{
+        //    Sender = new SenderPagSeguro()
+        //    {
+        //        IP = requestIp,
+        //        Documents = new List<SenderDocumentPagSeguro>() {
+        //            new SenderDocumentPagSeguro()
+        //            {
+        //                Value = pedido.Documento.ToString()
+        //            }
+        //        },
+        //        Phone = new SenderPhonePagSeguro()
+        //        {
+        //            AreaCode = pedido.Telefone,
+        //            Number = pedido.CodigoArea
+        //        },
+        //        Email = pedido.Email,
+        //        Name = pedido.NomeCliente
+        //    };
+        //    Items = new List<ItemPagSeguro>();
+        //    foreach (var produtoId in pedido.ProdutosPedido)
+        //    {
+        //        Items.Add(new ItemPagSeguro()
+        //        {
+        //            Id = produto.ProdutoId.ToString(),
+        //            Description = produto.Descricao,
+        //            Amount = produto.Preco,
+        //            Quantity = produto.Quantidade
+        //        });
+        //    }
+        //    RedirectURL = redirectUrl;
 
-            Reference = pedido.Id.ToString();
+        //    Reference = pedido.Id.ToString();
 
-            Shipping = new ShippingPagSeguro()
-            {
-                Address = new ShippingAddressPagSeguro()
-                {
-                    Street = pedido.EnderecoCliente.Rua,
-                    City = pedido.EnderecoCliente.Cidade,
-                    Complement = pedido.EnderecoCliente.Complemento,
-                    District = pedido.EnderecoCliente.Bairro,
-                    Number = pedido.EnderecoCliente.Numero,
-                    PostalCode = pedido.EnderecoCliente.CEP,
-                    State = states
-                        .Where(s => s.Value.Equals(pedido.EnderecoCliente.Estado))
-                        .FirstOrDefault().Key
-                },
-                Cost = "0",
-                Type = 1
-            };
-        }
+        //    Shipping = new ShippingPagSeguro()
+        //    {
+        //        Address = new ShippingAddressPagSeguro()
+        //        {
+        //            Street = pedido.EnderecoCliente.Rua,
+        //            City = pedido.EnderecoCliente.Cidade,
+        //            Complement = pedido.EnderecoCliente.Complemento,
+        //            District = pedido.EnderecoCliente.Bairro,
+        //            Number = pedido.EnderecoCliente.Numero,
+        //            PostalCode = pedido.EnderecoCliente.CEP,
+        //            State = states
+        //                .Where(s => s.Value.Equals(pedido.EnderecoCliente.Estado))
+        //                .FirstOrDefault().Key
+        //        },
+        //        Cost = "0",
+        //        Type = 1
+        //    };
+        //}
 
         [XmlElement(ElementName = "sender")]
         public SenderPagSeguro Sender { get; set; }

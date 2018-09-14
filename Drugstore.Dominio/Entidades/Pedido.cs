@@ -48,18 +48,5 @@ namespace Drugstore.Dominio.Entidades
         [Display(Name = "Telefone:")]
         [Required(ErrorMessage = "Informe seu Telefone")]
         public string Telefone { get; set; }
-
-        [HiddenInput(DisplayValue = false)]
-        public string CodigoArea { get; set; }
-
-        [HiddenInput(DisplayValue = true)]
-        public int Id { get; set; }
-
-        [HiddenInput(DisplayValue = false)]
-        public string ProdutosPedido { get; set; }
-
-        // Endereço
-        [HiddenInput(DisplayValue = false)]
-        public virtual EnderecoCliente EnderecoCliente { get; set; }
     }
 }

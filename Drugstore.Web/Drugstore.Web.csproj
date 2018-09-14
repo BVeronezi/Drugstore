@@ -129,6 +129,17 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="assets\img\estaticos\banner-medicamentos-setembro18-min.jpg" />
+    <Content Include="assets\img\estaticos\clube-do-bebe-banner-min.jpg" />
+    <Content Include="assets\img\estaticos\diabetes-setembro18-min.jpg" />
+    <Content Include="assets\img\estaticos\genericos-banner-hero-270818.jpg" />
+    <Content Include="assets\img\estaticos\unilever-tresemme-setembro18-min.jpg" />
+    <Content Include="assets\img\global\drugstore_logo.svg" />
+    <Content Include="assets\img\svg\arrow-blue.svg" />
+    <Content Include="assets\img\svg\cart.svg" />
+    <Content Include="assets\img\svg\menu.svg" />
+    <Content Include="assets\img\svg\search.svg" />
+    <Content Include="Content\StyleDrugstore.css" />
     <Content Include="Content\bootstrap-grid.css" />
     <Content Include="Content\bootstrap-grid.min.css" />
     <Content Include="Content\bootstrap-reboot.css" />
@@ -148,6 +159,7 @@
     <Content Include="Scripts\esm\popper-utils.min.js" />
     <Content Include="Scripts\esm\popper.js" />
     <Content Include="Scripts\esm\popper.min.js" />
+    <Content Include="Scripts\header.js" />
     <Content Include="Scripts\inputmask\bindings\inputmask.binding.js" />
     <Content Include="Scripts\inputmask\bindings\inputmask.binding.min.js" />
     <Content Include="Scripts\inputmask\dependencyLibs\inputmask.dependencyLib.jqlite.js" />
@@ -201,6 +213,7 @@
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
     <Content Include="Scripts\jQueryFixes.js" />
+    <Content Include="Scripts\MainDrugstore.js" />
     <Content Include="Scripts\mask.js" />
     <Content Include="Scripts\modernizr-2.6.2.js" />
     <Content Include="Scripts\popper-utils.js" />

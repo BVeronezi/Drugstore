@@ -1,23 +1,12 @@
 ﻿@model Drugstore.Dominio.Entidades.Produto
 
-<div class="arrow">
-    <div class="rounded">
-        <h4>
-            @Html.ActionLink(@Model.Nome, "Detalhes", "Vitrine", new { id = @Model.ProdutoId, produto = @Model.Nome.ToSeoUrl() }, new { @class = "deco-none" })
-            <br />
-            <span class="label col-form-label-lg">
-                @Model.Preco.ToString("c")
-            </span>
-        </h4>
-        @if (Model.Imagem != null)
-        {
-            <div class="row">
-                <div class="pull-right" style="margin-right: 1px">
-                    <img class="img-thumbnail" width="120" height="120" src="@Url.Action("ObterImagem", "Vitrine", new {Model.ProdutoId})" />
-                </div>
-            </div>
-        }
+<div class="container-fluid">
 
-
-    </div>
+    @if (Model.Imagem != null)
+    {
+        <img class="product-item--link" width="100" src="@Url.Action("ObterImagem", "Vitrine", new { Model.ProdutoId })" />
+    }
+        @Html.ActionLink(@Model.Nome, "Detalhes", "Vitrine", new { id = @Model.ProdutoId, produto = @Model.Nome.ToSeoUrl() }, new { @class = "deco-none" })
+        @Model.Preco.ToString("c")
 </div>
+
