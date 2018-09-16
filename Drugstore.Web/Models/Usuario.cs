@@ -24,5 +24,14 @@ namespace Drugstore.Web.Models
         [MaxLength(100)]
         public string Senha { get; set; }
 
+        [MaxLength(100)]
+        public string Email { get; set; }
+
+        [MaxLength(100)]
+        public string CPF { get; set; }
+
+        //[MaxLength(100)]
+        //public string Telefone { get; set; }
+
     }
 }

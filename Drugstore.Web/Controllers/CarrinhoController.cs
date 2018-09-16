@@ -60,7 +60,6 @@ namespace Drugstore.Web.Controllers
 
             return RedirectToAction("Index", new { returnUrl });
         }
-
         [Authorize]
         public ViewResult FecharPedido()
         {

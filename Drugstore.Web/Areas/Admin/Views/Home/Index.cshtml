@@ -1,0 +1,54 @@
+﻿@model Drugstore.Dominio.Entidades.Administrador
+@{
+    ViewBag.Title = "Index";
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <link href="~/Content/Login.css" rel="stylesheet" type="text/css" />
+    <link href="~/Content/StyleDrugstore.css" rel="stylesheet" />
+
+</head>
+<body>
+    <div id="login">
+        <div class="container">
+            <div id="login-row" class="row justify-content-center align-items-center">
+                <div id="login-column" class="col-md-5">
+                    <div class="login-box">
+                        <form id="form-signin" class="form-group" action="" method="post">
+                            <h3 class="text-center text-info">Administrador</h3>
+                            <img id="profile-img" class="profile-img-card" src="//ssl.gstatic.com/accounts/ui/avatar_2x.png" />
+                            <div class="form-group">
+                                @using (Html.BeginForm("LoginAdmin", "Administrador", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { @class = "form-signin" }))
+                                {
+                                    @Html.ValidationSummary();
+                                    <fieldset>
+                                        <div class="col-12">
+                                            <div class="form-group">
+                                                @Html.TextBoxFor(model => model.Login, new { @class = "form-control", placeholder = "Informe seu login" })
+                                                @Html.ValidationMessageFor(model => model.Login, "", new { @class = "text-danger" })
+                                            </div>
+                                            <div class="form-group">
+                                                @Html.PasswordFor(model => model.Senha, new { @class = "form-control", placeholder = "Informe sua senha" })
+                                                @Html.ValidationMessageFor(model => model.Senha, "", new { @class = "text-danger" })
+                                            </div>
+                                            <div class="form-group">
+                                                <input type="submit" style="width:150px; height: auto" class="btn btn-info btn-md" value="Acessar">
+                                            </div>
+                                        </div>
+                                    </fieldset>
+                                }
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
+@section scripts {
+    <script src="~/Scripts/jquery.validate.min.js"></script>
+    <script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
+}

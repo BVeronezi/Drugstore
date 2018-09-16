@@ -6,7 +6,6 @@
     {
         <img class="product-item--link" width="100" src="@Url.Action("ObterImagem", "Vitrine", new { Model.ProdutoId })" />
     }
-        @Html.ActionLink(@Model.Nome, "Detalhes", "Vitrine", new { id = @Model.ProdutoId, produto = @Model.Nome.ToSeoUrl() }, new { @class = "deco-none" })
-        @Model.Preco.ToString("c")
+    @Html.ActionLink(@Model.Nome, "Detalhes", "Vitrine", new { id = @Model.ProdutoId, produto = @Model.Nome.ToSeoUrl() }, new { @class = "deco-none" })
+    @Model.Preco.ToString("c")
 </div>
-

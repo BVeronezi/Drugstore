@@ -6,35 +6,43 @@
     <meta http-equiv="X-UA-Compatible" content="IE=8,chrome=1">
     <meta name="viewport" content="width=device-width" />
     <title>@ViewBag.Title - Drugstore</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="~/Content/StyleDrugstore.css" rel="stylesheet" />
+
 </head>
-<body>
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-        <div class="container-fluid">
-            <div class="navbar-header">
-                <a class="navbar-brand" href="#">Drugstore</a>
+<body id="" class="" cz-shortcut-listen="true">
+    <header class="header" data-scrolled="" id="">
+        <div class="header__topbar">
+            <div class="header__topbar-container container">
+                <ul class="header__topbar-nav">
+                    <li>
+                        <a href="/quem-somos" title="QUEM SOMOS">QUEM SOMOS</a>
+                    </li>
+                    <li>
+                        <a href="/perguntas" title="PERGUNTAS FREQUENTES">PERGUNTAS FREQUENTES</a>
+                    </li>
+                </ul>
+                <span class="header__topbar-tel">
+                    <span>FALE CONOSCO</span>
+                    <strong><a href="tel:01140072526" title="4000-1234" class="header__topbar-tel--link">4000-1234</a></strong>
+                </span>
             </div>
         </div>
-        <ul class="navbar-nav">
-            @if (User.Identity.IsAuthenticated)
-            {
-                <li class="dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                        @User.Identity.Name<span class="caret"></span>
-                    </a>
-                    <ul class="dropdown-menu">
-                        <li>@Html.ActionLink("Alterar senha", "AlterarSenha", "Perfil")</li>
-                        <li>@Html.ActionLink("Sair", "Logout", "Autenticacao")</li>
-                    </ul>
-                </li>
-            }
-            else
-            {
-                <li>@Html.ActionLink("Login", "Login", "Autenticacao")</li>
-                <li>@Html.ActionLink("Cadastre-se", "Cadastrar", "Autenticacao")</li>
-            }
-        </ul>
-    </nav>
-       <div>
+
+        <div class="header__main">
+            <div class="header__main-wrapper" style="padding-bottom: 30px;">
+                <div class="header__main-container container">
+                    <div class="header__main-logo">
+                        <a href="/" title="Drugstore">
+                            <img src="~/assets/img/global/drugstore_logo.svg" alt="Drugstore">
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <div class="col-xs-12">
         @RenderBody()
     </div>
 

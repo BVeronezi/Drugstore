@@ -39,7 +39,11 @@ namespace Drugstore.Web.Controllers
             {
                 Nome = viewmodel.Nome,
                 Login = viewmodel.Login,
-                Senha = viewmodel.Senha
+                Senha = viewmodel.Senha,
+                Email = viewmodel.Email,
+                CPF = viewmodel.CPF.ToString()
+                //Telefone = viewmodel.Telefone.ToString()
+
             };
 
             db.Usuarios.Add(novoUsuario);
