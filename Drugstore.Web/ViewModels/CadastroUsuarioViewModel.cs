@@ -13,19 +13,19 @@ namespace Drugstore.Web.ViewModels
         [Display(Name = "Nome")]
         public string Nome { get; set; }
 
+        [Required(ErrorMessage = "Informe seu Sobrenome")]
+        [Display(Name = "Sobrenome")]
+        public string Sobrenome { get; set; }
+
         [Required(ErrorMessage = "Informe seu Login")]
         [MaxLength(50, ErrorMessage = "O nome deve ter até 50 caracteres")]
         public string Login { get; set; }
 
         [Required(ErrorMessage = "informe seu cpf")]
         public int CPF { get; set; }
-
-        [Required(ErrorMessage = "Informe seu Telefone")]
-        public string Telefone { get; set; }
-
+        
         [Required(ErrorMessage = "Informe sua senha")]
         [DataType(DataType.Password)]
-        [MaxLength(6, ErrorMessage ="A senha deve ter pelo menos 6 caracteres")]
         public string Senha { get; set; }
 
     }

@@ -4,6 +4,8 @@
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=8,chrome=1">
     <meta name="viewport" content="width=device-width" />
+    <link href="~/Content/StyleDrugstore.css" rel="stylesheet" />
+
 
 </head>
 <body>
@@ -14,8 +16,8 @@
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                         @User.Identity.Name<span class="caret"></span>
                     </a>
-                    <ul class="dropdown-menu">
-                        <li>@Html.ActionLink("Logout", "LogoutAdmin", "Administrador")</li>
+                    <ul class="dropdown">
+                        <li>@Html.ActionLink("Logout", "LogoutAdmin", "Home")</li>
                     </ul>
                 </li>
             }

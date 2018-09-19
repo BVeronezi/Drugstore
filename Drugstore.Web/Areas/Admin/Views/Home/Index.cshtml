@@ -7,7 +7,7 @@
 <html>
 <head>
     <link href="~/Content/Login.css" rel="stylesheet" type="text/css" />
-    <link href="~/Content/StyleDrugstore.css" rel="stylesheet" />
+ 
 
 </head>
 <body>
@@ -20,7 +20,7 @@
                             <h3 class="text-center text-info">Administrador</h3>
                             <img id="profile-img" class="profile-img-card" src="//ssl.gstatic.com/accounts/ui/avatar_2x.png" />
                             <div class="form-group">
-                                @using (Html.BeginForm("LoginAdmin", "Administrador", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { @class = "form-signin" }))
+                                @using (Html.BeginForm("LoginAdmin", "Home", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { @class = "form-signin" }))
                                 {
                                     @Html.ValidationSummary();
                                     <fieldset>

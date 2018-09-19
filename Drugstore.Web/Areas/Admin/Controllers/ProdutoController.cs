@@ -6,10 +6,10 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 
-namespace Drugstore.Web.Controllers
+namespace Drugstore.Web.Areas.Admin.Controllers
 {
-    [Authorize]
-    public class ProdutosController : Controller
+
+    public class ProdutoController : Controller
     {
         private ProdutosRepositorio _repositorio;
         // GET: Produtos

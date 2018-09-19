@@ -86,11 +86,6 @@ html {
 }
 
 
-*,
-*::before,
-*::after {
-    box-sizing: inherit;
-}
 
 @-ms-viewport {
     width: device-width;
@@ -3444,7 +3439,6 @@ tbody.collapse.show {
     align-items: center;
     -ms-flex-pack: justify;
     justify-content: space-between;
-    padding: 0.5rem 1rem;
 }
 
     .navbar > .container,

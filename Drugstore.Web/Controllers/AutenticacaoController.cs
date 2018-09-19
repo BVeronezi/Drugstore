@@ -38,11 +38,11 @@ namespace Drugstore.Web.Controllers
             Usuario novoUsuario = new Usuario
             {
                 Nome = viewmodel.Nome,
+                Sobrenome = viewmodel.Sobrenome,
                 Login = viewmodel.Login,
                 Senha = viewmodel.Senha,
                 Email = viewmodel.Email,
                 CPF = viewmodel.CPF.ToString()
-                //Telefone = viewmodel.Telefone.ToString()
 
             };
 

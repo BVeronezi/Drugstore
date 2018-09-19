@@ -15,6 +15,10 @@ namespace Drugstore.Web.Models
         [MaxLength(100)]
         public string Nome { get; set; }
 
+        [Required]
+        [MaxLength(100)]
+        public string Sobrenome { get; set; }
+
         [Key]
         [Required]
         [MaxLength(50)]
@@ -29,9 +33,6 @@ namespace Drugstore.Web.Models
 
         [MaxLength(100)]
         public string CPF { get; set; }
-
-        //[MaxLength(100)]
-        //public string Telefone { get; set; }
 
     }
 }

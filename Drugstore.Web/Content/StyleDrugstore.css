@@ -1335,9 +1335,6 @@ legend, td, th {
     content: "\e260";
 }
 
-*, :after, :before, input[type=search] {
-    box-sizing: border-box;
-}
 
 body, html {
     font-family: "Open Sans",Arial,sans-serif;
@@ -4345,8 +4342,6 @@ tbody.collapse.in {
 .navbar {
     position: relative;
     min-height: 50px;
-    margin-bottom: 22px;
-    border: 1px solid transparent;
 }
 
     .navbar:after, .navbar:before {
@@ -8498,9 +8493,6 @@ button.close {
     margin-left: auto;
 }
 
-*, :after, :before, input[type=search] {
-    box-sizing: border-box;
-}
 
 .clearfix:after, .clearfix:before,
 .container:after, .container:before {
@@ -11188,7 +11180,7 @@ a {
 .header__main-checkout .header__main-customer__cart-icon {
     border-radius: 50%;
     padding: 5px;
-    background: #00A1E1;
+    background: #00a1e100;
 }
 
     .header__main-checkout .header__main-customer__cart-icon span {
@@ -14716,7 +14708,7 @@ input:checked + .form__group__box .form__group__title__ending {
     width: 30px;
     height: 30px;
     text-indent: -9999px;
-    background: url(../img/svg/login.svg) 50% 50% no-repeat;
+    background: url(../assets/img/svg/login.svg) 50% 50% no-repeat;
     background-size: cover;
     overflow: hidden;
 }

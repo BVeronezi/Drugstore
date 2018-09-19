@@ -19,8 +19,11 @@ namespace Drugstore.Web.Areas.Admin
          "Admin/{controller}/{action}/{id}",
          //new { action = "Index", id = UrlParameter.Optional } // original
          // adiciona-se o nome do controller
-         new { controller = "Home", action = "Index", id = UrlParameter.Optional }
+         new { controller = "Home", action = "Index", id = UrlParameter.Optional },
+         namespaces:new [] {"Drugstore.Web.Areas.Admin.Controllers"}
      );
+
+
         }
     }
 }
