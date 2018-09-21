@@ -1,0 +1,52 @@
+﻿@model Drugstore.Web.ViewModels.AlterarSenhaViewModel
+@{
+    ViewBag.Title = "AlterarSenha";
+}
+<meta name=viewport content="user-scalable=no, width=device-width, initial-scale=1.0" />
+<meta name=apple-mobile-web-app-capable content=yes />
+@using (Html.BeginForm())
+{
+    <main>
+        <div class="main-container">
+            <div id="ac-page">
+                <div data-reactroot="">
+                    <div class="account-header">
+                        <h3 class="auth-title">Alterar Senha</h3>
+                    </div>
+                    <fieldset class="form__fieldset">
+                        <div class="registered-users">
+                            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                            <div class="input-box">
+                                @Html.LabelFor(model => model.SenhaAtual, htmlAttributes: new { @class = "name" })
+                                <div class="col-md-10">
+                                    @Html.EditorFor(model => model.SenhaAtual, new { htmlAttributes = new { @class = "form-control" } })
+                                    @Html.ValidationMessageFor(model => model.SenhaAtual, "", new { @class = "text-danger" })
+                                </div>
+                                @Html.LabelFor(model => model.NovaSenha, htmlAttributes: new { @class = "name" })
+                                <div class="col-md-10">
+                                    @Html.EditorFor(model => model.NovaSenha, new { htmlAttributes = new { @class = "form-control" } })
+                                    @Html.ValidationMessageFor(model => model.NovaSenha, "", new { @class = "text-danger" })
+                                </div>
+                                @Html.LabelFor(model => model.ConfirmacaoSenha, htmlAttributes: new { @class = "name" })
+                                <div class="col-md-10">
+                                    @Html.EditorFor(model => model.ConfirmacaoSenha, new { htmlAttributes = new { @class = "form-control" } })
+                                    @Html.ValidationMessageFor(model => model.ConfirmacaoSenha, "", new { @class = "text-danger" })
+                                </div>
+                                <div class="col-md-6">
+                                    <input type="submit" value="Salvar" class="btn btn-primary btn--full" />
+                                </div>
+                            </div>
+                        </div>
+
+                    </fieldset>
+
+                </div>
+            </div>
+        </div>
+    </main>
+
+}
+@section scripts {
+    <script src="~/Scripts/jquery.validate.min.js"></script>
+    <script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
+}

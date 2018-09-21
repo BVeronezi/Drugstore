@@ -1,0 +1,55 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=8,chrome=1">
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewBag.Title - Drugstore</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="~/Content/StyleDrugstore.css" rel="stylesheet" />
+    <link href="~/Content/bootstrap-reboot.css" rel="stylesheet" />
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+
+</head>
+<body id="" class="" cz-shortcut-listen="true">
+    <header class="header" data-scrolled="" id="">
+        <div class="header__topbar">
+            <div class="header__topbar-container container">
+                <ul class="header__topbar-nav">
+                    <li>
+                        <a href="/quem-somos" title="QUEM SOMOS">QUEM SOMOS</a>
+                    </li>
+                    <li>
+                        <a href="/perguntas" title="PERGUNTAS FREQUENTES">PERGUNTAS FREQUENTES</a>
+                    </li>
+                </ul>
+                <span class="header__topbar-tel">
+                    <span>FALE CONOSCO</span>
+                    <strong><a href="tel:01140072526" title="4000-1234" class="header__topbar-tel--link">4000-1234</a></strong>
+                </span>
+            </div>
+        </div>
+
+        <div class="header__main">
+            <div class="header__main-wrapper" style="padding-bottom: 30px;">
+                <div class="header__main-container container">
+                    <div class="header__main-logo">
+                        <a href="/" title="Drugstore">
+                            <img src="~/assets/img/global/drugstore_logo.svg" alt="Drugstore">
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <div class="col-xs-12">
+        @RenderBody()
+    </div>
+
+    <script src="~/Scripts/jquery-3.3.1.min.js"></script>
+    <script src="~/Scripts/bootstrap.min.js"></script>
+    @RenderSection("scripts", false)
+</body>
+</html>

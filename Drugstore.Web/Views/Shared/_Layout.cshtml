@@ -1,0 +1,142 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=8,chrome=1">
+    <title>@ViewBag.Title - Drugstore</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="~/Content/StyleDrugstore.css" rel="stylesheet" />
+    <link href="~/Content/bootstrap.css" rel="stylesheet" />
+    <link href="~/Content/bootstrap-reboot.css" rel="stylesheet" />
+
+</head>
+<body id="" class="" cz-shortcut-listen="true">
+    <header class="header" data-scrolled="" id="">
+        <div class="header__topbar">
+            <div class="header__topbar-container container">
+                <ul class="header__topbar-nav">
+                    <li>
+                        <a href="/quem-somos" title="QUEM SOMOS">QUEM SOMOS</a>
+                    </li>
+                    <li>
+                        <a href="/perguntas" title="PERGUNTAS FREQUENTES">PERGUNTAS FREQUENTES</a>
+                    </li>
+                </ul>
+                <span class="header__topbar-tel">
+                    <span>FALE CONOSCO</span>
+                    <strong><a href="tel:01140072526" title="4000-1234" class="header__topbar-tel--link">4000-1234</a></strong>
+                </span>
+            </div>
+        </div>
+
+        <div class="header__main">
+            <div class="header__main-wrapper" style="padding-bottom: 25px;">
+                <div class="header__main-container container">
+                    <div class="header__main-logo">
+                        <a href="/" title="Drugstore">
+                            <img src="~/assets/img/global/drugstore_logo.svg" alt="Drugstore">
+                        </a>
+                    </div>
+                    <form class="header__main-search" id="searchForm">
+                        <fieldset class="header__form clearfix">
+                            <div class="header__form-input">
+                                <input id="searchQuery" type="text" name="Ntt" autocomplete="off" placeholder="O que você está procurando?" class="header__form-text">
+                            </div>
+                            <input id="searchSubmit" placeholder="Buscar" class="header__form-submit" type="submit">
+                        </fieldset>
+                    </form>
+
+                    <div class="header__main-customer" style="margin-top: 1%;">
+                        <div class="header__account popover-hover--init" id="account-header-section">
+                            <div data-reactroot="" class="header__account__wrapper clearfix">
+                                <figure class="header__account__avatar"></figure><div class="header__account__login">
+                                    <a class="header__account__action" href="@Url.Action("Login","Autenticacao")">
+                                        @if (User.Identity.IsAuthenticated)
+                                        {
+                                            <div class="dropdown">
+                                                <label>Olá,</label>
+                                                @User.Identity.Name
+                                                @Html.ActionLink("Alterar senha", "AlterarSenha", "Perfil")
+                                                @Html.ActionLink("Sair", "Logout", "Autenticacao")
+                                            </div>
+                                        }
+                                        else
+                                        {
+                                            <i class="header__account__icon">
+                                            </i><span class="header__account__greet">Olá,</span><span class="header__account__lnk">Faça seu login</span>
+                                        }
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="header__main-customer__cart" id="mini-cart-root">
+                            <div data-reactroot="" class="header__main-checkout .header__main-customer__cart-icon">
+                                <a href="@Url.Action("Resumo", "Carrinho")" class="header__main-customer__cart-icon">
+                                    <span>Carrinho</span>
+                                </a>
+                                <div class="header__main-customer__minicart header__popover ">
+                                    <div class="header__popover-wrapper">
+                                        <a id="cartMenu" href="#shoppingcart" data-url=@Html.Action("Resumo", "Carrinho")</a>
+                                        <a href="@Url.Action("FecharPedido", "Carrinho")" class="btn btn-primary">FINALIZAR COMPRA</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <a class="navbar-brand" href="#"></a>
+        <div class="header__main-menu">
+            <button class="header__main-menu__trigger" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            </div>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav mr-auto center-block">
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Saúde <span class="sr-only">(current)</span></a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Beleza</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Mãe e Bebê</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Higiene e Cuidados</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Genéricos</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Diabetes</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Descontos especiais
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <a class="dropdown-item" href="#">Linha Feminina</a>
+                            <a class="dropdown-item" href="#">Linha Masculina</a>
+                            <div class="dropdown-divider"></div>
+                            <a class="dropdown-item" href="#">Medicamentos</a>
+                        </div>
+                    </li>
+
+                </ul>
+            </div>
+    </nav>
+    <div class="col-xs-8">
+        @RenderBody()
+    </div>
+    <script src="~/Scripts/jquery-3.3.1.min.js"></script>
+    <script src="~/Scripts/bootstrap.min.js"></script>
+
+    @RenderSection("scripts", false)
+</body>
+</html>
