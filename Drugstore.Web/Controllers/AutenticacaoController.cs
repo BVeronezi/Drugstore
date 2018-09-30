@@ -1,14 +1,11 @@
-﻿using Drugstore.Dominio.Entidades;
-using Drugstore.Dominio.Repositorio;
-using Drugstore.Web.Models;
+﻿using Drugstore.Web.Models;
 using Drugstore.Web.ViewModels;
+using Drugstore.Web.Utils;
 using System;
 using System.Linq;
 using System.Security.Claims;
-using System.Security.Policy;
 using System.Web;
 using System.Web.Mvc;
-using System.Web.Security;
 
 namespace Drugstore.Web.Controllers
 {
@@ -40,7 +37,7 @@ namespace Drugstore.Web.Controllers
                 Nome = viewmodel.Nome,
                 Sobrenome = viewmodel.Sobrenome,
                 Login = viewmodel.Login,
-                Senha = viewmodel.Senha,
+                Senha = Hash.GerarHash(viewmodel.Senha),
                 Email = viewmodel.Email,
                 CPF = viewmodel.CPF.ToString()
 
